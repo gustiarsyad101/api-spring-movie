@@ -27,11 +27,14 @@ public class Movie {
     @Column(name="image")
     private String image;
 
-    @Column(name="created_at")
-    private Timestamp created_at;
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false, name = "created_at")
+    protected Timestamp createdAt;
 
-    @Column(name="updated_at")
-    private Timestamp updated_at;
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    protected Timestamp updatedAt;
+
 
     public Movie(int id, String title, String description, Float rating, String image, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
